@@ -26,26 +26,33 @@
       <button type="submit">Submit</button>
     </template>
   </app-form>
+  <select v-model="componentName">
+    <option value="Home">Home</option>
+    <option value="About">About</option>
+  </select>
+
+  <keep-alive>
+    <component :is="componentName"></component>
+  </keep-alive>
 </template>
 
 <script>
 import AppForm from "./components/Form.vue";
+import Home from "./components/Home.vue";
+import About from "./components/About.vue";
 
 export default {
   name: "App",
   components: {
     AppForm,
+    Home,
+    About,
   },
   data() {
     return {
       help: "This is some help text.",
+      componentName: "Home",
     };
   },
 };
 </script>
-
-<style>
-form {
-  margin: 50px;
-}
-</style>
